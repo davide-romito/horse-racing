@@ -22,7 +22,8 @@ public class HorseRacingController {
     public String exercise(@RequestParam(value="input", required=false) String input, ModelMap model) {
 		if (!StringUtils.isEmpty(input)) {
             model.addAttribute(INPUT_ATT, input);
-            model.addAttribute(OUTPUT_ATT, "Position, Lane, Horse name\n1, 1, Star\n2, 3, Cheyenne\n3, 4, Misty\n4, 5, Spirit\n5, 2, Dakota");
+            KentuckyDerby kd = new KentuckyDerby();
+            model.addAttribute(OUTPUT_ATT, kd.play(input));
 		}
         return "exercise";
     }
